@@ -10,9 +10,23 @@
   <name>Cloud</name>
   <url>http://maven.apache.org</url>
 
-  <properties>
+  <properties>	
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+
+<repositories>
+	<repository>
+		<id>cloudera-releases</id>
+		<url>https://repository.cloudera.com/artifactory/cloudera-repos</url>
+		<releases>
+			<enabled>true</enabled>
+		</releases>
+		<snapshots>
+			<enabled>false</enabled>
+		</snapshots>
+	</repository>
+</repositories>
+
 
   <dependencies>
     <dependency>
@@ -25,15 +39,11 @@
     	<groupId>log4j</groupId>
     	<artifactId>log4j</artifactId>
     	<version>1.2.9</version>
-    	<type>jar</type>
-    	<scope>compile</scope>
     </dependency>
-    <dependency>
-    	<groupId>org.jboss.netty</groupId>
-    	<artifactId>netty</artifactId>
-    	<version>3.2.7.Final</version>
-    	<type>bundle</type>
-    	<scope>compile</scope>
-    </dependency>
+	<dependency>
+		<groupId>com.cloudera</groupId>
+		<artifactId>flume-core</artifactId>
+		<version>0.9.4-cdh3u5</version>
+	</dependency>
   </dependencies>
 </project>
