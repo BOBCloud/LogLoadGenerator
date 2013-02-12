@@ -19,7 +19,6 @@ public class Provider_impl implements Provider{
 	}
 
 	/* 스레드를 만들어 줍니다. */
-	@Override
 	public void run() {
 		while(true){
 			/* queue.put(String) 이렇게 하면 로그를 넣을수 있습니다. */
