@@ -1,5 +1,6 @@
 package BOB.Cloud.consumer;
 
+import java.math.BigInteger;
 import java.util.concurrent.BlockingQueue;
 /*
  * 메이븐에 netty를 추가해 놨습니다. 비동기 처리가 가능하기 때문에 대용량 데이터를 전송하는
@@ -17,7 +18,7 @@ public class Consumer_impl implements Consumer{
 	 * Counting how many logs are taken from queue
 	 * @see #CONSUMED_LOGS
 	 */
-	public static int CONSUMED_LOGS = 0;
+	public static BigInteger CONSUMED_LOGS = new BigInteger("0");
 	
 	/**
 	 * A queue statically used in apps.
@@ -29,8 +30,12 @@ public class Consumer_impl implements Consumer{
 	 * A constructor which builds an objects
 	 * @param _queue static queue
 	 */
+	
+	public Network_Manager manager;
+	
 	public Consumer_impl(BlockingQueue<String> _queue){
 		this.queue = _queue;
+		this.manager = new Network_Manager();
 	}
 
 	/**
@@ -45,8 +50,11 @@ public class Consumer_impl implements Consumer{
 		while(true){
 			try{
 				String _item = queue.take();
-				CONSUMED_LOGS ++;
+				
+				Consumer_impl.CONSUMED_LOGS.add(BigInteger.ONE);
+				
 				this.handleItem(_item);
+				
 			}catch(InterruptedException e){
 				try{
 					Thread.sleep(500);
@@ -59,8 +67,13 @@ public class Consumer_impl implements Consumer{
 	}
 	
 	public void handleItem(String item) {
-		// TODO Auto-generated method stub
 		
-	}	
+		this.manager.sendItem(item);
+		
+	}
+	
+	public static String getConsumedLogs(){
+		return Consumer_impl.CONSUMED_LOGS.toString();
+	}
 	
 }
