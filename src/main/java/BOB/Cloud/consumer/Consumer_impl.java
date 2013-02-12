@@ -47,15 +47,15 @@ public class Consumer_impl implements Consumer{
 	public void run() {
 		while(true){
 			try{
+				System.out.println("test2 c");
 				String _item = queue.take();
-				
-				Consumer_impl.addNumLogs();
-				
+				//Consumer_impl.addNumLogs();
 				this.handleItem(_item);
 				
 			}catch(InterruptedException e){
 				try{
-					Thread.sleep(500);
+					System.out.println("error");
+					//Thread.sleep(500);
 				}catch(Exception _e){
 					System.out.println("Little bit wait..");
 				}

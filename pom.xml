@@ -44,6 +44,6 @@
 		<groupId>com.cloudera</groupId>
 		<artifactId>flume-core</artifactId>
 		<version>0.9.4-cdh3u5</version>
-	</dependency>
+	</dependency>    
   </dependencies>
 </project>

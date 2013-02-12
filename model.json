@@ -1,0 +1,64 @@
+[
+    {
+        "apache": 
+        {
+        "format":"%s - %s %s \"GET %s HTTP/1.1\" %s %s \"-\" %s",
+    	"items":
+    		[
+	            {
+	                "name": "ip",
+	                "type": "ip",
+	                "is_random": true,
+	                "flag": 1
+	            },
+	          	{
+	                "name": "user_id",
+	                "type": "str",
+	                "abnormal_random_list": [],
+	                "normal_random_list": ["apache"],
+	                "is_random": false,
+	                "flag": 2
+	            },
+	            {
+	                "name": "date",
+	                "type": "date",
+	                "is_random": true,
+	            	"format": "dd/MMM/yyyy:HH:mm:ss Z",
+	            	"flag": 3
+	            },
+	            {
+	                "name": "url",
+	                "type": "str",
+	                "abnormal_random_list": [],
+	                "normal_random_list": ["/favicon.ico", "/robots.txt", "/?C=D;O=A", "/logs/"],
+	                "is_random": false,
+	            	"flag": 4
+	            },
+	            {
+	                "name": "status_code",
+	                "type": "int",
+	                "abnormal_random_list": [403],
+	                "normal_random_list": [200, 201, 202, 203, 204, 205, 206],
+	                "is_random": false,
+	            	"flag": 5
+	            },
+	            {
+	                "name": "content_size",
+	                "type": "int",
+	                "is_random": true,
+	                "range": 1000,
+	            	"flag": 6
+	            },
+	            {
+	                "name": "http_header",
+	                "type": "str",
+	                "is_random": false,
+	                "abnormal_random_list": [],
+	                "normal_random_list": ["\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.56 Safari/536.5\"","\"Baiduspider-image+(+http://www.baidu.com/search/spider.htm)\""],
+	                "is_random": false,
+	                "flag": 7
+	            }
+			]		
+		}		
+    }
+]
