@@ -80,7 +80,9 @@ public class Consumer_impl implements Consumer{
 	}
 	
 	/**
-	 * 
+	 * public static void addNumLogs()
+	 * This method adds static variable, CONSUMED_LOGS 
+	 * adds 1 value. Its class is BigInteger so, using add method, variable's value is added
 	 */
 	public static void addNumLogs(){
 		Consumer_impl.CONSUMED_LOGS.add(BigInteger.ONE);
