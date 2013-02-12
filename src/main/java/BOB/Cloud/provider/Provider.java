@@ -1,5 +1,5 @@
 package BOB.Cloud.provider;
 
-public interface Provider extends Runnable {
 
+public interface Provider extends Runnable{
 }

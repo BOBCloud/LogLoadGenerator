@@ -47,10 +47,9 @@ public class Consumer_impl implements Consumer{
 	public void run() {
 		while(true){
 			try{
+				System.out.println("test2 c");
 				String _item = queue.take();
-				
 				Consumer_impl.addNumLogs();
-				
 				this.handleItem(_item);
 				
 			}catch(InterruptedException e){
