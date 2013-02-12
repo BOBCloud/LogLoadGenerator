@@ -44,6 +44,12 @@
 		<groupId>com.cloudera</groupId>
 		<artifactId>flume-core</artifactId>
 		<version>0.9.4-cdh3u5</version>
-	</dependency>    
+	</dependency> 
+	<dependency>
+		<groupId>org.json</groupId>
+		<artifactId>json</artifactId>
+		<version>20070829</version>
+	</dependency>
+             
   </dependencies>
 </project>

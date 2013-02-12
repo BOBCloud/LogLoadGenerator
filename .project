@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-<<<<<<< HEAD
 	<name>Cloud</name>
-=======
-	<name>LogLoadGenerator</name>
->>>>>>> d0bbb39847cec1371b2b9989aab731730940913a
 	<comment></comment>
 	<projects>
 	</projects>
@@ -15,21 +11,13 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-<<<<<<< HEAD
 			<name>org.maven.ide.eclipse.maven2Builder</name>
-=======
-			<name>org.eclipse.m2e.core.maven2Builder</name>
->>>>>>> d0bbb39847cec1371b2b9989aab731730940913a
 			<arguments>
 			</arguments>
 		</buildCommand>
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
-<<<<<<< HEAD
 		<nature>org.maven.ide.eclipse.maven2Nature</nature>
-=======
-		<nature>org.eclipse.m2e.core.maven2Nature</nature>
->>>>>>> d0bbb39847cec1371b2b9989aab731730940913a
 	</natures>
 </projectDescription>
