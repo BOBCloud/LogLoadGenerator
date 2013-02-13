@@ -21,7 +21,6 @@ public class Main
 	
     public static void main( String[] args ){    	
     		/* 로그를 10000개 만들 provider를 생성합니다. */
-    	System.out.println("sibal");
     	Provider prv = new ProviderImplement(10000, queue);
        	Consumer con = new Consumer_impl(queue);
        	prv.run();
