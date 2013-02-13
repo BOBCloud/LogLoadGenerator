@@ -4,6 +4,9 @@ import java.util.concurrent.BlockingQueue;
 
 import BOB.Cloud.provider.Provider;
 
+/**
+ * @author  syncc
+ */
 public class ProviderImplement implements Provider{
 	/*
 	 * 큐가 가진 배열의 길이는 1000개 이고 배열에 들어가는 자료형은 String 입니다.
@@ -11,6 +14,10 @@ public class ProviderImplement implements Provider{
 	 * 사용할 메서드는 put(1)-삽입, take(0)-빼냄 [큐가 가득 차거나 비었을 때 대기하는 메서드]	
 	 */
 	private BlockingQueue<String> queue;
+	/**
+	 * @uml.property  name="logProducer"
+	 * @uml.associationEnd  
+	 */
 	private LogProducer logProducer;
 	
 	/* 로그를 몇개나 만들지,, 생성자에서 넣어줍니다. */
@@ -28,7 +35,7 @@ public class ProviderImplement implements Provider{
 			try{
 				queue.put(this.logProducer.ModelParser(true));
 				
-				System.out.println(queue.size());
+				//System.out.println(queue.size());
 
 				//System.out.println(queue.take());
 			} catch (InterruptedException e){

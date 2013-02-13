@@ -1,5 +1,6 @@
 package BOB.Cloud.consumer;
 
+
 public interface Consumer extends Runnable{
 
 	/**
@@ -8,5 +9,4 @@ public interface Consumer extends Runnable{
 	 * @param item derived from queue
 	 */
 	public void handleItem(String item);
-	
 }

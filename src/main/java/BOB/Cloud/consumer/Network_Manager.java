@@ -1,19 +1,18 @@
 package BOB.Cloud.consumer;
 
-import com.cloudera.flume.handlers.thrift.Priority;
-import com.cloudera.flume.handlers.thrift.ThriftFlumeEvent;
-import com.cloudera.flume.handlers.thrift.ThriftFlumeEventServer.Client;
 import java.nio.ByteBuffer;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.apache.thrift.TException;
+
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TSocket;
 import org.apache.thrift.transport.TTransport;
+
+import com.cloudera.flume.handlers.thrift.Priority;
+import com.cloudera.flume.handlers.thrift.ThriftFlumeEvent;
+import com.cloudera.flume.handlers.thrift.ThriftFlumeEventServer.Client;
 
 public class Network_Manager {
 	
@@ -32,20 +31,7 @@ public class Network_Manager {
         tfe.host = "localhost";
 
         tfe.body = ByteBuffer.wrap(_item.getBytes());
-        Client client = getClient();
-        try {
-        	try {
-				client.append(tfe);
-			} catch (TException e) {
-				e.printStackTrace();
-			}
-        } finally {
-            try {
-                client.close();
-            } catch (TException ex) {
-                Logger.getLogger(Network_Manager.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        
 	}
 	
 	public static Client getClient() {

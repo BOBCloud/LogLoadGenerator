@@ -17,8 +17,15 @@ import org.json.JSONObject;
 import BOB.Cloud.provider.manager.PropertiesManager;
 
 
+/**
+ * @author  syncc
+ */
 public class LogProducer
 {
+	/**
+	 * @uml.property  name="propertiesManager"
+	 * @uml.associationEnd  
+	 */
 	private PropertiesManager propertiesManager;
 	private String modelDataFileName;
 	

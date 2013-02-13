@@ -6,8 +6,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * @author  syncc
+ */
 public class ModelItemParser
 {
+	/**
+	 * @uml.property  name="util"
+	 * @uml.associationEnd  
+	 */
 	private Util util;
 	private boolean isNormal = false; 
 	private JSONArray itemList;
