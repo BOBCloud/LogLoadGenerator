@@ -3,6 +3,7 @@ package BOB.Cloud.consumer;
 import java.util.concurrent.BlockingQueue;
 
 import BOB.Cloud.LogController;
+import BOB.Cloud.consumer.Consumer;
 
 /**
  * @author  syncc

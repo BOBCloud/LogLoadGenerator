@@ -13,8 +13,8 @@ public class LogController {
 	 */
 	private static BlockingQueue<String> queue = new ArrayBlockingQueue<String>(
 			100000);
-	/* Log를 10000개를 요청할 때마다, Thread를 하나씩 만듭니다 */
-	private final static int threadDivide = 10;
+	/* Log를 1000개를 요청할 때마다, Thread를 하나씩 만듭니다 */
+	private final static int threadDivide = 1000;
 
 	/**
 	 * Counting how many logs are taken from queue

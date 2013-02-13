@@ -5,6 +5,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TSocket;
@@ -16,35 +19,14 @@ import com.cloudera.flume.handlers.thrift.ThriftFlumeEventServer.Client;
 
 public class Network_Manager {
 	
-	/**
-	 * Thrift Flume Event is an event for thrift which acknowledges
-	 * it's event so, Flume's node can detect event's source
-	 * @see #tfe
-	 */
 	ThriftFlumeEvent tfe;
-	
-	/**
-	 * Map type variable filed stores a string , ByteBuffer 
-	 * for transport to the flume's node
-	 */
 	Map<String, java.nio.ByteBuffer> fields;
 	
-	/**
-	 * public Network_manager()
-	 * A constructor for network_manager
-	 * It initializes Its variable
-	 */
 	public Network_Manager(){
 		this.tfe = new ThriftFlumeEvent();
 		this.fields = new HashMap<String, ByteBuffer>();
 	}
 	
-	/**
-	 * public void sendItem(String _item)
-	 * this method used to send an chunk of string to flume node.
-	 * the parameter, _item is rebuilt suitable for flume.
-	 * @param _item a string that will be rebuilt
-	 */
 	public void sendItem(String _item){
 		tfe.fields = fields;
         tfe.priority = Priority.INFO;
@@ -53,13 +35,22 @@ public class Network_Manager {
 
         tfe.body = ByteBuffer.wrap(_item.getBytes());
         
+        Client client = getClient();
+        try {
+        	try {
+				client.append(tfe);
+			} catch (TException e) {
+				e.printStackTrace();
+			}
+        } finally {
+            try {
+                client.close();
+            } catch (TException ex) {
+                Logger.getLogger(Network_Manager.class.getName()).log(Level.ALL, null, ex);
+            }
+        }
 	}
 	
-	/**
-	 * public static Client getClient()
-	 * This method is for getting Client using Thrift's class
-	 * @return an client for communicating with Flume
-	 */
 	public static Client getClient() {
         TTransport transport = new TSocket("localhost", 12345);
         if (!transport.isOpen()) {
