@@ -34,9 +34,11 @@ public class Network_Manager {
         tfe.body = ByteBuffer.wrap(_item.getBytes());
         Client client = getClient();
         try {
-            client.append(tfe);
-        } catch (TException ex) {
-            Logger.getLogger(Network_Manager.class.getName()).log(Level.SEVERE, null, ex);
+        	try {
+				client.append(tfe);
+			} catch (TException e) {
+				e.printStackTrace();
+			}
         } finally {
             try {
                 client.close();

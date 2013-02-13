@@ -47,20 +47,13 @@ public class ConsumerImplement implements Consumer{
 	public void run() {
 		while(true){
 			try{
-				System.out.println("test2 c");
 				String _item = queue.take();
 				ConsumerImplement.addNumLogs();
-				this.handleItem(_item);
-				
+				this.handleItem(_item);				
 			}catch(InterruptedException e){
-				try{
-					Thread.sleep(500);
-				}catch(Exception _e){
-					System.out.println("Little bit wait..");
-				}
+				System.out.println("InterruptedException");				
 			}
-			/* queue.take() 이렇게 하면 큐에 들어가 있는 로그가 나옵니다. */
-		}		
+		}
 	}
 	
 	public void handleItem(String item) {

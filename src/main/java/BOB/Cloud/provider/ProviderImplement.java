@@ -24,14 +24,18 @@ public class ProviderImplement implements Provider{
 
 	/* 스레드를 만들어 줍니다. */
 	public void run() {
-		while(true){
+		for(int i =0; i < logNum; i++){
 			try{
 				queue.put(this.logProducer.ModelParser(true));
+				
 				System.out.println(queue.size());
+
+				//System.out.println(queue.take());
 			} catch (InterruptedException e){
 				e.printStackTrace();
-			}
+			} 
 		}
+		System.out.println("ProviderImplement thread End");
 		
 	}	
 	
