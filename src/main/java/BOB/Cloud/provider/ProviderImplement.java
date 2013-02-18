@@ -23,9 +23,17 @@ public class ProviderImplement implements Provider{
 	/* 로그를 몇개나 만들지,, 생성자에서 넣어줍니다. */
 	private int logNum;
 	
-	public ProviderImplement(int _logNum, BlockingQueue<String> _queue){
+	/* 로그를 만들 포맷을 지정합니다 */
+	private String logFormat;
+	
+	/*비정상 로그를 출력할 확률을 지정합니다*/
+	private int abnormalRandomValue;
+	
+	public ProviderImplement(int _logNum, BlockingQueue<String> _queue, String _logFormat, int _abnormalRandomValue){
 		this.logNum = _logNum;
 		this.queue 	= _queue;
+		this.logFormat = _logFormat;
+		this.abnormalRandomValue = _abnormalRandomValue; 
 		this.logProducer = new LogProducer();
 	}
 

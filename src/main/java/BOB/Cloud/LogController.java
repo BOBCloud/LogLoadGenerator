@@ -16,6 +16,7 @@ public class LogController {
 	/* Log를 1000개를 요청할 때마다, Thread를 하나씩 만듭니다 */
 	private final static int threadDivide = 1000;
 
+
 	/**
 	 * Counting how many logs are taken from queue
 	 * @see #CONSUMED_LOGS
@@ -39,8 +40,8 @@ public class LogController {
 	public synchronized static void addNumLogs(){
 		CONSUMED_LOGS++;
 	}
-	
-	public LogController(int logNum) {
+	//new LogController(num, logFormat, abnormalRandomValue);
+	public LogController(int logNum, String logFormat, int abnormalRandomValue) {
 
 		int threadNum;
 		int logNumThread = logNum;
@@ -57,7 +58,7 @@ public class LogController {
 		for (int i = 0; i < threadNum; i++) {
 			new Thread(new ProviderImplement(
 					((logNum - threadDivide) > 0) ? threadDivide : logNum,
-					queue)).start();
+					queue, logFormat, abnormalRandomValue)).start();
 			new Thread(new ConsumerImplement(logNumThread, threadNum, queue)).start();
 			logNum = logNum - threadDivide;
 		}
