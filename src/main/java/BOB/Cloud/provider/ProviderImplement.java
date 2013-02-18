@@ -43,12 +43,12 @@ public class ProviderImplement implements Provider{
 		for(int i =0; i < logNum; i++){
 			try{
 //				if( (randomValue.nextInt(100)+1) )
-				queue.put(this.logProducer.ModelParser(true));
-				
+				//this.logProducer.ModelParser(true));
+				System.out.println(this.logProducer.ModelParser(true, "random"));
 				//System.out.println(queue.size());
 
 				//System.out.println(queue.take());
-			} catch (InterruptedException e){
+			} catch (Exception e){
 				e.printStackTrace();
 			} 
 		}

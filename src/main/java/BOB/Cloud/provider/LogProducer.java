@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import org.json.JSONArray;
@@ -18,10 +19,9 @@ import BOB.Cloud.provider.manager.PropertiesManager;
 
 
 /**
- * @author  syncc
+ * @author  Loup_
  */
-public class LogProducer
-{
+public class LogProducer{
 	/**
 	 * @uml.property  name="propertiesManager"
 	 * @uml.associationEnd  
@@ -29,15 +29,10 @@ public class LogProducer
 	private PropertiesManager propertiesManager;
 	private String modelDataFileName;
 	
-	public LogProducer()
-	{
+	public String ModelParser(Boolean isNormal, String logFormat){
 		propertiesManager = new PropertiesManager();
 		modelDataFileName = propertiesManager.getProperty("modelFile");
-	}
-	
-	public String ModelParser(Boolean isNormal){
-		
-		Map<String, Object> modelData = getModelData();
+		Map<String, Object> modelData = getModelData(logFormat);
 		JSONArray modelItemList = (JSONArray) modelData.get("items");
 		String format = (String) modelData.get("format");
 		
@@ -46,12 +41,12 @@ public class LogProducer
 		return String.format(format, itemValueList.toArray());
 	}
 	
-	private Map<String, Object> getModelData(){
+	private Map<String, Object> getModelData(String logformat){
 		Map<String, Object> map = new HashMap<String, Object>();
-		JSONObject model = getRandomModel();
+		JSONObject model = getModel(logformat);
 		try{
-			JSONArray itemList = model.getJSONObject(model.keys().next().toString()).getJSONArray("items");
-			String format = model.getJSONObject(model.keys().next().toString()).getString("format");
+			JSONArray itemList = model.getJSONArray("items");
+			String format = model.getString("format");
 			map.put("items", itemList);
 			map.put("format", format);
 		}catch(Exception e){
@@ -60,16 +55,26 @@ public class LogProducer
 		return map;
 	}
 	
-	private JSONObject getRandomModel(){
-		JSONArray modelList = null;
-		JSONObject randomModel = null;
+	private JSONObject getModel(String format){
+		JSONObject models = null, model = null;
+		ArrayList<String> keyList = new ArrayList<String>();
 		try{
-			modelList = new JSONArray(getModelFileData());
-			randomModel = new JSONObject(modelList.get(new Util().getRandomArrayNumber(modelList.length())).toString());
+			models = new JSONObject(getModelFileData());
+
+			if(format.equals("random") || format.length() <= 0){
+				Iterator<?> keys = models.keys();
+				while(keys.hasNext()){
+					keyList.add(keys.next().toString());
+				}
+				String key = keyList.get(new Util().getRandomArrayNumber(keyList.size()));
+				model = models.getJSONObject(key);
+			}else{
+				model = models.getJSONObject(format);
+			}
 		} catch (JSONException e){
 			e.printStackTrace();
 		}
-		return randomModel;
+		return model;
 	}
 	
 	private String getModelFileData(){
