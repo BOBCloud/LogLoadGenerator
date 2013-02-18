@@ -1,0 +1,5 @@
+#surefire
+#Mon Feb 18 02:04:46 PST 2013
+user.dir=/home/tommy/LogLoadGenerator
+localRepository=/home/tommy/.m2/repository
+basedir=/home/tommy/LogLoadGenerator

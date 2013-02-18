@@ -1,5 +1,6 @@
 package BOB.Cloud;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Start {
@@ -7,13 +8,15 @@ public class Start {
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		int num = 0;
 		String logFormat = "";
 		int abnormalRandomValue = 0;
 		boolean flag = true;
 		String input;
-		
+		new LogController(num, logFormat, abnormalRandomValue);
+
+/*		
 		while(flag){
 			Scanner sc = new Scanner(System.in);
 		
@@ -48,7 +51,7 @@ public class Start {
 			}else if(input.matches("(?i).*run")){
 				System.out.println("Strat");
 				if( (!logFormat.equals("")) && num !=0 && abnormalRandomValue != 0){
-				new LogController(num, logFormat, abnormalRandomValue);
+					new LogController(num, logFormat, abnormalRandomValue);
 				}else{
 					System.out.println("Need more value");
 				}
@@ -59,6 +62,6 @@ public class Start {
 		
 			
 	
-		}
+		}*/
 	}
 }

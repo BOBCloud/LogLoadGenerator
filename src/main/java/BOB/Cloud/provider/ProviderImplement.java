@@ -1,5 +1,6 @@
 package BOB.Cloud.provider;
 
+import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 
 import BOB.Cloud.provider.Provider;
@@ -41,6 +42,7 @@ public class ProviderImplement implements Provider{
 	public void run() {
 		for(int i =0; i < logNum; i++){
 			try{
+//				if( (randomValue.nextInt(100)+1) )
 				queue.put(this.logProducer.ModelParser(true));
 				
 				//System.out.println(queue.size());

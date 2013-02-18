@@ -60,7 +60,7 @@ public class ConsumerImplement implements Consumer{
 				detectEnd();
 				String _item = queue.take();
 				this.handleItem(_item);	
-				System.out.println(LogController.getConsumedLogs());
+				
 			}catch(InterruptedException e){
 				System.out.println("InterruptedException");				
 			}

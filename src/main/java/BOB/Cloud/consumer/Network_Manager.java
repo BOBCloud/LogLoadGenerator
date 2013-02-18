@@ -19,12 +19,15 @@ import com.cloudera.flume.handlers.thrift.ThriftFlumeEventServer.Client;
 
 public class Network_Manager {
 	
+	private Client client;
+	
 	ThriftFlumeEvent tfe;
 	Map<String, java.nio.ByteBuffer> fields;
 	
 	public Network_Manager(){
 		this.tfe = new ThriftFlumeEvent();
 		this.fields = new HashMap<String, ByteBuffer>();
+		client = getClient();
 	}
 	
 	public void sendItem(String _item){
@@ -34,8 +37,7 @@ public class Network_Manager {
         tfe.host = "localhost";
 
         tfe.body = ByteBuffer.wrap(_item.getBytes());
-        
-        Client client = getClient();
+
         try {
         	try {
 				client.append(tfe);
