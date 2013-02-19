@@ -27,7 +27,15 @@
 	            {
 	                "name": "url",
 	                "type": "str",
-	                "abnormal_random_list": ["fuck"],
+	                "abnormal_random_list": 
+	                ["fuck",
+	                 "GET /cgi-bin/shop.cgi?page=../../../../../../../etc/passwd",
+	                 "GET /cgi-bin/excite;IFS=\\\"$\\\";/bin/cat /etc/passwd",
+	                 "GET /cgi-bin/csChatRBox.cgi?command=savesetup&setup=;system('cat%20/etc/passwd')",
+	                 "GET /bin/admin.pl",
+	                 "GET /mobileadmin/bin/",
+	                 "GET /htdocs/../../../../../../../../../../../etc/passwd",
+	                 "GET /perl/-e%20%22system('cat%20/etc/passwd');\\%22",],
 	                "normal_random_list": ["/favicon.ico", "/robots.txt", "/?C=D;O=A", "/logs/"],
 	                "is_random": false,
 	            	"flag": 4

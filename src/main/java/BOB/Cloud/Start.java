@@ -9,7 +9,7 @@ public class Start {
 	 * @param args
 	 */
 	public static void main(String[] args) throws IOException {
-		int num = 0;
+		int num = 50;
 		String logFormat = "";
 		int abnormalRandomValue = 0;
 		boolean flag = true;
