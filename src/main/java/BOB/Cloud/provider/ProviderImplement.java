@@ -38,13 +38,21 @@ public class ProviderImplement implements Provider{
 		this.logProducer = new LogProducer();
 	}
 
+	Random randomValue = new Random();
+	boolean randomFlag;
+	
 	/* 스레드를 만들어 줍니다. */
 	public void run() {
 		for(int i =0; i < logNum; i++){
 			try{
-//				if( (randomValue.nextInt(100)+1) )
-				//this.logProducer.ModelParser(true));
-				System.out.println(this.logProducer.ModelParser(true, "random"));
+				if(randomValue.nextInt(100) <= abnormalRandomValue){
+					randomFlag = false;
+				}else{
+					randomFlag = true;
+				}
+				System.out.print(randomFlag);
+				//this.logProducer.ModelParser(randomFlag, "random");
+				queue.put(this.logProducer.ModelParser(false, "random"));
 				//System.out.println(queue.size());
 
 				//System.out.println(queue.take());
