@@ -14,9 +14,7 @@
 	          	{
 	                "name": "user_id",
 	                "type": "str",
-	                "abnormal_random_list": [],
-	                "normal_random_list": ["apache"],
-	                "is_random": false,
+	                "is_random": true,
 	                "flag": 2
 	            },
 	            {
@@ -29,7 +27,7 @@
 	            {
 	                "name": "url",
 	                "type": "str",
-	                "abnormal_random_list": [],
+	                "abnormal_random_list": ["fuck"],
 	                "normal_random_list": ["/favicon.ico", "/robots.txt", "/?C=D;O=A", "/logs/"],
 	                "is_random": false,
 	            	"flag": 4
@@ -53,7 +51,7 @@
 	                "name": "http_header",
 	                "type": "str",
 	                "is_random": false,
-	                "abnormal_random_list": [],
+	                "abnormal_random_list": ["\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.56 Safari/536.5\"","\"Baiduspider-image+(+http://www.baidu.com/search/spider.htm)\""],
 	                "normal_random_list": ["\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.56 Safari/536.5\"","\"Baiduspider-image+(+http://www.baidu.com/search/spider.htm)\""],
 	                "is_random": false,
 	                "flag": 7
