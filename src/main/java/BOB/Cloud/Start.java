@@ -1,9 +1,24 @@
 package BOB.Cloud;
 
 import java.io.IOException;
-import java.util.Scanner;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.Properties;
 
 public class Start {
+
+	 public static String getPropertyy() throws Exception {
+
+		InputStream in = ClassLoader
+				.getSystemResourceAsStream("setting.properties");
+		if (in == null) {
+			throw new Exception("Cannot find test.properties");
+		}
+		Properties p = new Properties();
+		p.load(in);
+		in.close();
+		return p.getProperty("modelFile");
+	}
 
 	/**
 	 * @param args
@@ -11,57 +26,32 @@ public class Start {
 	public static void main(String[] args) throws IOException {
 		int num = 50;
 		String logFormat = "";
-		int abnormalRandomValue = 0;
+		int abnormalRandomValue = 50;
 		boolean flag = true;
 		String input;
-		new LogController(num, logFormat, abnormalRandomValue);
 
-/*		
-		while(flag){
-			Scanner sc = new Scanner(System.in);
-		
-			System.out.print("<BOB_Cloud LogLoadGenerater> ");
-			input = sc.nextLine();
-			if(input.matches("(?i).*format.*")){
-				logFormat = input.substring( input.indexOf(" ") +1 );
-				System.out.println("Set format : " + logFormat);
-				
-			}else if(input.matches("(?i).*count.*")){
-				num = Integer.parseInt(input.substring( input.indexOf(" ") +1 ));
-				System.out.println("Set count : " + num);
-				
-			}else if(input.matches("(?i).*abRandom.*")){
-				abnormalRandomValue = Integer.parseInt( input.substring( input.indexOf(" ") +1 ));
-				if( (0 <= abnormalRandomValue) && (abnormalRandomValue >= 100) ){
-					System.out.println("input Error, range 0 ~ 100");
-				}
-				System.out.println("Set abRandom : " + abnormalRandomValue);
-				
-			}else if(input.matches("(?i).*show")){
-				System.out.println("Formate  : " + logFormat);
-				System.out.println("Count	 : " + num);
-				System.out.println("abRandom : " + abnormalRandomValue);
-				
-			}else if(input.matches("(?i).*help.*")){
-				System.out.println("Formate 	<String> 			: 로그포멧을 지정합니다.");
-				System.out.println("Count  		<num>[0~999*] 	 	: 로그를 몇개나 보낼지 설정합니다");
-				System.out.println("abRandom  	<percent>[0~100] 	: 비정상 로그를 보낼 확률을 설정합니다");
-				
+		try {
+			System.out.println(getPropertyy());
+		} catch (Exception e) {
+			e.printStackTrace(System.out);
+		}
 
-			}else if(input.matches("(?i).*run")){
-				System.out.println("Strat");
-				if( (!logFormat.equals("")) && num !=0 && abnormalRandomValue != 0){
-					new LogController(num, logFormat, abnormalRandomValue);
-				}else{
-					System.out.println("Need more value");
-				}
-			}
-			else{
-				System.out.println(input +" : Command not found");
-			}
-		
-			
-	
-		}*/
+		/*
+		 * ClassLoader cl; cl = Thread.currentThread().getContextClassLoader();
+		 * if (cl == null) cl = ClassLoader.getSystemClassLoader();
+		 * 
+		 * URL url = cl.getResource("setting.properties");
+		 * 
+		 * Properties properties = new Properties();
+		 * 
+		 * properties.load(url.openStream()); properties.list(System.out);
+		 */
+		// new LogController(num, logFormat, abnormalRandomValue);
+
+	}
+
+	private static char[] getProperty() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
