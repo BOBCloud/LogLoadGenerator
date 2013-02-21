@@ -32,6 +32,7 @@ public class LogProducer{
 	public String ModelParser(Boolean isNormal, String logFormat){
 		propertiesManager = new PropertiesManager();
 		modelDataFileName = propertiesManager.getProperty("modelFile");
+		
 		Map<String, Object> modelData = getModelData(logFormat);
 		JSONArray modelItemList = (JSONArray) modelData.get("items");
 		String format = (String) modelData.get("format");
@@ -43,6 +44,7 @@ public class LogProducer{
 	
 	private Map<String, Object> getModelData(String logformat){
 		Map<String, Object> map = new HashMap<String, Object>();
+		
 		JSONObject model = getModel(logformat);
 		try{
 			JSONArray itemList = model.getJSONArray("items");
@@ -83,6 +85,9 @@ public class LogProducer{
         BufferedReader br = null;
         try{
             fis = new FileInputStream(modelDataFileName);
+            if(fis != null){
+            	System.out.println("aaaaaaaaa");
+            }
             br = new BufferedReader(new InputStreamReader(fis , "UTF-8"));
             modelData =fileReader(br);
         }catch ( FileNotFoundException e) {

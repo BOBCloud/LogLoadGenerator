@@ -21,7 +21,16 @@ public class LogController {
 	 * Counting how many logs are taken from queue
 	 * @see #CONSUMED_LOGS
 	 */
-	public static long CONSUMED_LOGS = 0;
+	private static long CONSUMED_LOGS = 0;
+	private static long MISS_LOGS = 0;
+	
+	public synchronized static long getMissLogs(){
+		return MISS_LOGS;
+	}
+	
+	public synchronized static void addMissLogs(){
+		MISS_LOGS++;
+	}
 	
 	/**
 	 * This method returns the number of consumed logs

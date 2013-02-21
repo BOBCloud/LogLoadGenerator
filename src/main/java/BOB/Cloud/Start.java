@@ -1,57 +1,27 @@
 package BOB.Cloud;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.util.Properties;
+
+import BOB.Cloud.provider.manager.PropertiesManager;
 
 public class Start {
 
-	 public static String getPropertyy() throws Exception {
-
-		InputStream in = ClassLoader
-				.getSystemResourceAsStream("setting.properties");
-		if (in == null) {
-			throw new Exception("Cannot find test.properties");
-		}
-		Properties p = new Properties();
-		p.load(in);
-		in.close();
-		return p.getProperty("modelFile");
-	}
-
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) throws IOException {
-		int num = 50;
+		int num = 10;
 		String logFormat = "";
-		int abnormalRandomValue = 50;
-		boolean flag = true;
-		String input;
+		int abnormalRandomValue = 0;
 
-		try {
-			System.out.println(getPropertyy());
-		} catch (Exception e) {
-			e.printStackTrace(System.out);
-		}
-
-		/*
-		 * ClassLoader cl; cl = Thread.currentThread().getContextClassLoader();
-		 * if (cl == null) cl = ClassLoader.getSystemClassLoader();
-		 * 
-		 * URL url = cl.getResource("setting.properties");
-		 * 
-		 * Properties properties = new Properties();
-		 * 
-		 * properties.load(url.openStream()); properties.list(System.out);
-		 */
-		// new LogController(num, logFormat, abnormalRandomValue);
-
+		PropertiesManager p = new PropertiesManager();
+		
+		num = Integer.parseInt( p.getProperty("logNum"));
+        logFormat = p.getProperty("logFormat");
+        abnormalRandomValue = Integer.parseInt( p.getProperty("abnormalRandom"));
+        
+		System.out.println(num +", "+ logFormat + ", " +abnormalRandomValue);
+		
+		new LogController(num, logFormat, abnormalRandomValue);
+		
+		
 	}
 
-	private static char[] getProperty() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

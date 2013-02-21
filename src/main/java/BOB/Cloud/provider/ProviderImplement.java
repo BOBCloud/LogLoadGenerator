@@ -50,8 +50,8 @@ public class ProviderImplement implements Provider{
 				}else{
 					randomFlag = true;
 				}
-				System.out.print(randomFlag);
-				//this.logProducer.ModelParser(randomFlag, "random");
+				//System.out.print(randomFlag);
+				System.out.println(this.logProducer.ModelParser(randomFlag, "random"));
 				queue.put(this.logProducer.ModelParser(false, "random"));
 				//System.out.println(queue.size());
 
@@ -60,7 +60,7 @@ public class ProviderImplement implements Provider{
 				e.printStackTrace();
 			} 
 		}
-		System.out.println("ProviderImplement thread End");
+		//System.out.println("ProviderImplement thread End");
 		
 	}	
 	

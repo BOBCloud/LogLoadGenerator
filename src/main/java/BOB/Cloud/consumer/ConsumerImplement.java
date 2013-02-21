@@ -58,14 +58,17 @@ public class ConsumerImplement implements Consumer{
 			try{
 				LogController.addNumLogs();
 				detectEnd();
-				String _item = queue.take();
+				String _item = queue.take(); 	
 				this.handleItem(_item);	
 				
 			}catch(InterruptedException e){
 				System.out.println("InterruptedException");				
 			}
 		}
-		System.out.println("ConsumerImplement thread End");
+		//System.out.println("ConsumerImplement thread End");
+		if(logNum <= LogController.getConsumedLogs()){
+			System.out.println("Total Log : " +logNum + "  Success Log : " +(logNum - LogController.getMissLogs()) + "  Failed Log : " + LogController.getMissLogs());
+		}
 
 	}
 	

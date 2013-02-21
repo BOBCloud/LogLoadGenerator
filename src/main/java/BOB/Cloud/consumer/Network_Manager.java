@@ -13,6 +13,8 @@ import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TSocket;
 import org.apache.thrift.transport.TTransport;
 
+import BOB.Cloud.LogController;
+
 import com.cloudera.flume.handlers.thrift.Priority;
 import com.cloudera.flume.handlers.thrift.ThriftFlumeEvent;
 import com.cloudera.flume.handlers.thrift.ThriftFlumeEventServer.Client;
@@ -42,6 +44,7 @@ public class Network_Manager {
         	try {
 				client.append(tfe);
 			} catch (TException e) {
+				LogController.addMissLogs();
 				e.printStackTrace();
 			}
         } finally {
