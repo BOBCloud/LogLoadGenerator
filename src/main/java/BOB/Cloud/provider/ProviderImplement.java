@@ -51,8 +51,8 @@ public class ProviderImplement implements Provider{
 					randomFlag = true;
 				}
 				//System.out.print(randomFlag);
-				System.out.println(this.logProducer.ModelParser(randomFlag, "random"));
-				//queue.put(this.logProducer.ModelParser(false, "random"));
+				//System.out.println(this.logProducer.ModelParser(randomFlag, "random"));
+				queue.put(this.logProducer.ModelParser(false, "random"));
 				//System.out.println(queue.size());
 
 				//System.out.println(queue.take());
